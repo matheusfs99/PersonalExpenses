@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "apps.cards",
     "apps.agreements",
     "apps.balance",
+    "apps.core",
 ]
 
 MIDDLEWARE = [

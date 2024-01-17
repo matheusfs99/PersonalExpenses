@@ -1,0 +1,82 @@
+<!--  COMPRAS FIXAS E PARCELADAS  -->
+<div class="col">
+    <div>
+        <table class="table">
+            <thead class="table-info">
+            <tr>
+                <th scope="col">Fatura (fixas e parceladas)</th>
+                <th scope="col">Valor por mês</th>
+                <th scope="col">Parcelamento</th>
+                <th scope="col">Valor Total</th>
+                <th scope="col">
+                    <a href="{% url 'bills:add_invoice' %}">add</a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.purchase }}</td>
+                <td>R${{ invoice.installment_value }}</td>
+                <td>
+                    {% if invoice.is_fixed %}fixo
+                    {% else %}{{ invoice.current_installment }}/{{ invoice.installments }}
+                    {% endif %}
+                </td>
+                <td>R${{ invoice.total }}</td>
+                <td>
+                    <button class="btn btn-outline-dark">
+                        Editar
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th scope="col">Total</th>
+                <th scope="col">R${{ total_invoices }}</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<!--  COMPRAS EXTRAS NO CARTÃO  -->
+<div class="col">
+    <div>
+        <table class="table">
+            <thead class="table-warning">
+            <tr>
+                <th scope="col">Compras extras no crédito</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Cartão</th>
+                <th scope="col">Vencimento</th>
+                <th scope="col">
+                    <a href="{% url 'bills:add_extra_invoice' %}">add</a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for invoice in extra_invoices %}
+            <tr>
+                <td>{{ invoice.purchase }}</td>
+                <td>R${{ invoice.total }}</td>
+                <td>{{ invoice.card }}</td>
+                <td>{{ invoice.card.maturity }}</td>
+                <td>
+                    <button class="btn btn-outline-dark">
+                        Editar
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th scope="col">Total</th>
+                <th scope="col">R${{ total_extra_invoices }}</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

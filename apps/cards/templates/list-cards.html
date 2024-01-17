@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<h1>lista de cartoes</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Banco</th>
+      <th scope="col">Vencimento</th>
+      <th scope="col">Limite</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for card in cards %}
+    <tr>
+      <td>{{ card.bank }}</td>
+      <td>Dia {{ card.maturity }}</td>
+      <td>R$ {{ card.limit }}</td>
+      <td>
+        <a href="{% url 'cards:update_card' card.id %}" class="btn btn-secondary">
+          Editar
+        </a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<a href="{% url 'cards:create_card' %}" class="btn btn-primary">Adicionar Cartão</a>
+{% endblock content%}

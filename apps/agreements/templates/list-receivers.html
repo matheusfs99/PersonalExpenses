@@ -1,0 +1,38 @@
+<div class="col">
+    <div>
+        <table class="table">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">A quem eu devo</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Motivo</th>
+                <th scope="col">Quando cobrar</th>
+                <th scope="col">
+                    <a href="{% url 'agreements:add_receiver' %}">add</a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for receiver in receivers %}
+            <tr>
+                <td>{{ receiver.name }}</td>
+                <td>R${{ receiver.value }}</td>
+                <td>{{ receiver.reason }}</td>
+                <td>{{ receiver.billing_date }}</td>
+                <td>
+                    <button class="btn btn-outline-dark">
+                        Editar
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <th scope="col">Total</th>
+                <th scope="col">R${{ total_receivers }}</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
