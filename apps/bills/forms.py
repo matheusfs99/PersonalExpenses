@@ -14,6 +14,11 @@ class BillForm(forms.ModelForm):
             "paid": forms.CheckboxInput(attrs={"class": "form-check-input"}),
         }
 
+    def __init__(self, *args, **kwargs):
+        super(BillForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs["class"] = "form-control"
+
 
 class InvoiceForm(forms.ModelForm):
     class Meta:
@@ -29,6 +34,11 @@ class InvoiceForm(forms.ModelForm):
             "card": forms.Select(attrs={"class": "form-select"}),
         }
 
+    def __init__(self, *args, **kwargs):
+        super(InvoiceForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs["class"] = "form-control"
+
 
 class InvoiceExtraForm(forms.ModelForm):
     class Meta:
@@ -39,6 +49,11 @@ class InvoiceExtraForm(forms.ModelForm):
             "total": forms.NumberInput(attrs={"class": "form-control"}),
             "card": forms.Select(attrs={"class": "form-select"}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(InvoiceExtraForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs["class"] = "form-control"
 
     def save(self, commit=True):
         instance = super(InvoiceExtraForm, self).save(commit=False)
