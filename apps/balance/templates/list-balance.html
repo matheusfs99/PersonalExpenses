@@ -1,76 +1,64 @@
 <!--    BALANÇO GERAL    -->
 <div class="col">
     <div>
-        <table class="table">
-            <thead class="table-success">
-            <tr>
-                <th scope="col">Balanço</th>
-                <th scope="col">Valor</th>
-                <th scope="col">
-                    <a href="{% url 'balance:add_earning' %}">add</a>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for earning in earnings %}
-            <tr>
-                <td>{{ earning.earning }}</td>
-                <td>R${{ earning.value }}</td>
-                <td>
-                    <button class="btn btn-outline-dark">
-                        Editar
-                    </button>
-                </td>
-            </tr>
-            {% endfor %}
-            <tr>
-                <td>Descontos</td>
-                <td>- R${{ total_discounts }}</td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <th scope="col">Total</th>
-                <th scope="col">R${{ total_balance }}</th>
-            </tr>
-            </tfoot>
-        </table>
+        <form>
+            <table class="table">
+                <thead class="table-success">
+                <tr>
+                    <th scope="col">Balanço</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">
+                        <a href="{% url 'balance:add_earning' %}">add</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for earning in earnings %}
+                {% include "hx/earning-hx.html" %}
+                {% endfor %}
+                <tr>
+                    <td>Descontos</td>
+                    <td>- R${{ total_discounts }}</td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th scope="col">Total</th>
+                    <th scope="col">R${{ total_balance }}</th>
+                </tr>
+                </tfoot>
+            </table>
+        </form>
     </div>
 </div>
 <!--    DESCONTOS    -->
 <div class="col">
     <div class="col">
         <div>
-            <table class="table">
-                <thead class="table-danger">
-                <tr>
-                    <th scope="col">Descontos</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">
-                        <a href="{% url 'balance:add_discount' %}">add</a>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for discount in discounts %}
-                <tr>
-                    <td>{{ discount.discount }}</td>
-                    <td>R${{ discount.value }}</td>
-                    <td>
-                        <button class="btn btn-outline-dark">
-                            Editar
-                        </button>
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th scope="col">Total</th>
-                    <th scope="col">R${{ total_discounts }}</th>
-                </tr>
-                </tfoot>
-            </table>
+            <form>
+                <table class="table">
+                    <thead class="table-danger">
+                    <tr>
+                        <th scope="col">Descontos</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">
+                            <a href="{% url 'balance:add_discount' %}">add</a>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for discount in discounts %}
+                    {% include "hx/discount-hx.html" %}
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th scope="col">Total</th>
+                        <th scope="col">R${{ total_discounts }}</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </form>
         </div>
     </div>
 </div>

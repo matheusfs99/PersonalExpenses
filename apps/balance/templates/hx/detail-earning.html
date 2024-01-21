@@ -1,0 +1,20 @@
+<tr id="trEarning">
+    <form method="post">
+        {% csrf_token %}
+        <td>{{ form.earning }}</td>
+        <td>{{ form.value }}</td>
+        <td>
+            <button type="submit"
+                    class="btn btn-outline-success"
+                    hx-post="{% url 'balance:update_earning' earning.pk %}"
+                    hx-target="#trEarning"
+                    hx-swap="outerHTML">Salvar</button>
+            <button class="btn btn-outline-danger"
+                    hx-get="{% url 'balance:update_earning' earning.pk %}"
+                    hx-target="#trEarning"
+                    hx-swap="outerHTML">
+                Cancelar
+            </button>
+        </td>
+    </form>
+</tr>

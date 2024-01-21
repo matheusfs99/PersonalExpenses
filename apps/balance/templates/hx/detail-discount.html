@@ -1,0 +1,20 @@
+<tr id="trDiscount">
+    <form method="post">
+        {% csrf_token %}
+        <td>{{ form.discount }}</td>
+        <td>{{ form.value }}</td>
+        <td>
+            <button type="submit"
+                    class="btn btn-outline-success"
+                    hx-post="{% url 'balance:update_discount' discount.pk %}"
+                    hx-target="#trDiscount"
+                    hx-swap="outerHTML">Salvar</button>
+            <button class="btn btn-outline-danger"
+                    hx-get="{% url 'balance:update_discount' discount.pk %}"
+                    hx-target="#trDiscount"
+                    hx-swap="outerHTML">
+                Cancelar
+            </button>
+        </td>
+    </form>
+</tr>
