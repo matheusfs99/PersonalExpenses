@@ -1,28 +1,30 @@
 <div class="col">
     <div>
-        <table class="table">
-            <thead class="table-secondary">
-            <tr>
-                <th scope="col">Quem me deve</th>
-                <th scope="col">Valor</th>
-                <th scope="col">Motivo</th>
-                <th scope="col">Quando cobrar</th>
-                <th scope="col">
-                    <a href="{% url 'agreements:add_debtor' %}">add</a>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for debtor in debtors %}
-            {% include "hx/debtor-hx.html" %}
-            {% endfor %}
-            </tbody>
-            <tfoot>
-            <tr>
-                <th scope="col">Total</th>
-                <th scope="col">R${{ total_debtors }}</th>
-            </tr>
-            </tfoot>
-        </table>
+        <form>
+            <table class="table">
+                <thead class="table-secondary">
+                <tr>
+                    <th scope="col">Quem me deve</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Motivo</th>
+                    <th scope="col">Quando cobrar</th>
+                    <th scope="col">
+                        <a href="{% url 'agreements:add_debtor' %}">add</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for debtor in debtors %}
+                {% include "hx/debtor-hx.html" %}
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th scope="col">Total</th>
+                    <th scope="col">R${{ total_debtors }}</th>
+                </tr>
+                </tfoot>
+            </table>
+        </form>
     </div>
 </div>
