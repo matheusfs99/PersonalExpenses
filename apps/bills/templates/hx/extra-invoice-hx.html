@@ -1,0 +1,12 @@
+<tr hx-target="this" hx-swap="outerHTML">
+    <td>{{ invoice.purchase }}</td>
+    <td>R${{ invoice.total }}</td>
+    <td>{{ invoice.card }}</td>
+    <td>{{ invoice.card.maturity }}</td>
+    <td>
+        <button class="btn btn-outline-dark"
+                hx-get="{% url 'bills:detail_extra_invoice' invoice.id %}">
+            Editar
+        </button>
+    </td>
+</tr>

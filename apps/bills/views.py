@@ -16,6 +16,23 @@ def add_bill(request):
     return render(request, "add-bill.html", context)
 
 
+def detail_bill(request, pk):
+    bill = Bill.objects.get(id=pk)
+    form = BillForm(request.POST or None, instance=bill)
+    context = {"form": form, "bill": bill}
+    return render(request, "hx/detail-bill.html", context)
+
+
+def update_bill(request, pk):
+    bill = Bill.objects.get(id=pk)
+    form = BillForm(request.POST or None, instance=bill)
+    context = {"form": form, "bill": bill}
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+    return render(request, "hx/bill-hx.html", context)
+
+
 def list_bills():
     bills = Bill.objects.all()
     total_bills = total_value(bills, "value")
@@ -39,6 +56,23 @@ def add_invoice(request):
     return render(request, "add-invoice.html", context)
 
 
+def detail_invoice(request, pk):
+    invoice = Invoice.objects.get(id=pk)
+    form = InvoiceForm(request.POST or None, instance=invoice)
+    context = {"form": form, "invoice": invoice}
+    return render(request, "hx/detail-invoice.html", context)
+
+
+def update_invoice(request, pk):
+    invoice = Invoice.objects.get(id=pk)
+    form = InvoiceForm(request.POST or None, instance=invoice)
+    context = {"form": form, "invoice": invoice}
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+    return render(request, "hx/invoice-hx.html", context)
+
+
 def add_extra_invoice(request):
     form = InvoiceExtraForm(request.POST or None)
     context = {"form": form}
@@ -47,6 +81,23 @@ def add_extra_invoice(request):
             form.save()
             return redirect("core:home")
     return render(request, "add-invoice.html", context)
+
+
+def detail_extra_invoice(request, pk):
+    invoice = Invoice.objects.get(id=pk)
+    form = InvoiceExtraForm(request.POST or None, instance=invoice)
+    context = {"form": form, "invoice": invoice}
+    return render(request, "hx/detail-extra-invoice.html", context)
+
+
+def update_extra_invoice(request, pk):
+    invoice = Invoice.objects.get(id=pk)
+    form = InvoiceExtraForm(request.POST or None, instance=invoice)
+    context = {"form": form, "invoice": invoice}
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+    return render(request, "hx/extra-invoice-hx.html", context)
 
 
 def list_invoices():

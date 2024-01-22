@@ -1,0 +1,16 @@
+<tr hx-target="this" hx-swap="outerHTML">
+    <td>{{ invoice.purchase }}</td>
+    <td>R${{ invoice.installment_value }}</td>
+    <td>
+        {% if invoice.is_fixed %}Fixo
+        {% else %}{{ invoice.current_installment }}/{{ invoice.installments }}
+        {% endif %}
+    </td>
+    <td>R${{ invoice.total }}</td>
+    <td>
+        <button class="btn btn-outline-dark"
+                hx-get="{% url 'bills:detail_invoice' invoice.id %}">
+            Editar
+        </button>
+    </td>
+</tr>

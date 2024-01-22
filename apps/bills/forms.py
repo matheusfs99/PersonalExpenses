@@ -17,7 +17,8 @@ class BillForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BillForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
+            if field_name is not "paid":
+                field.widget.attrs["class"] = "form-control"
 
 
 class InvoiceForm(forms.ModelForm):
@@ -26,12 +27,10 @@ class InvoiceForm(forms.ModelForm):
         fields = "__all__"
         widgets = {
             "purchase": forms.TextInput(attrs={"class": "form-control"}),
-            "is_fixed": forms.CheckboxInput(attrs={"class": "form-check-input"}),
             "installments": forms.NumberInput(attrs={"class": "form-control"}),
             "installment_value": forms.NumberInput(attrs={"class": "form-control"}),
             "total": forms.NumberInput(attrs={"class": "form-control"}),
             "current_installment": forms.NumberInput(attrs={"class": "form-control"}),
-            "card": forms.Select(attrs={"class": "form-select"}),
         }
 
     def __init__(self, *args, **kwargs):

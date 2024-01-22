@@ -1,42 +1,31 @@
 <div class="col">
     <div>
-        <table class="table">
-            <thead class="table-primary">
-            <tr>
-                <th scope="col">Contas Fixas</th>
-                <th scope="col">Valor</th>
-                <th scope="col">Forma de pagamento</th>
-                <th scope="col">Data de pagamento</th>
-                <th scope="col">Status</th>
-                <th scope="col">
-                    <a href="{% url 'bills:add_bill' %}">add</a>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for bill in bills %}
-            <tr>
-                <td>{{ bill.bill }}</td>
-                <td>R${{ bill.value }}</td>
-                <td>{{ bill.payment_method }}</td>
-                <td>{{ bill.payment_date }}</td>
-                <td>
-                    {% if bill.paid %}Pago{% else %}Pendente{% endif %}
-                </td>
-                <td>
-                    <button class="btn btn-outline-dark">
-                        Editar
-                    </button>
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-            <tfoot>
-            <tr>
-                <th scope="col">Total</th>
-                <th scope="col">R${{ total_bills }}</th>
-            </tr>
-            </tfoot>
-        </table>
+        <form>
+            <table class="table">
+                <thead class="table-primary">
+                <tr>
+                    <th scope="col">Contas Fixas</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Forma de pagamento</th>
+                    <th scope="col">Data de pagamento</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">
+                        <a href="{% url 'bills:add_bill' %}">add</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for bill in bills %}
+                {% include "hx/bill-hx.html" %}
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th scope="col">Total</th>
+                    <th scope="col">R${{ total_bills }}</th>
+                </tr>
+                </tfoot>
+            </table>
+        </form>
     </div>
 </div>

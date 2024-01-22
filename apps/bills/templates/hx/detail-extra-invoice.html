@@ -1,0 +1,20 @@
+<tr id="trExtraInvoice">
+    <form method="post">
+        {% csrf_token %}
+        <td>{{ form.purchase }}</td>
+        <td>{{ form.total }}</td>
+        <td>{{ form.card }}</td>
+        <td></td>
+        <td>
+            <button type="submit"
+                    class="btn btn-outline-success"
+                    hx-post="{% url 'bills:update_extra_invoice' invoice.id %}"
+                    hx-target="#trExtraInvoice"
+                    hx-swap="outerHTML">Salvar</button>
+            <button class="btn btn-outline-danger"
+                    hx-get="{% url 'bills:update_extra_invoice' invoice.id %}"
+                    hx-target="#trExtraInvoice"
+                    hx-swap="outerHTML">Cancelar</button>
+        </td>
+    </form>
+</tr>

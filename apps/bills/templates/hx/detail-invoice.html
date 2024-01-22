@@ -1,0 +1,24 @@
+<tr id="trInvoice">
+    <form method="post">
+        {% csrf_token %}
+        <td>{{ form.purchase }}</td>
+        <td>{{ form.installment_value }}</td>
+        <td>
+            {% if invoice.is_fixed %}Fixo
+            {% else %}{{ form.current_installment }}/{{ form.installments }}
+            {% endif %}
+        </td>
+        <td>{{ form.total }}</td>
+        <td>
+            <button type="submit"
+                    class="btn btn-outline-success"
+                    hx-post="{% url 'bills:update_invoice' invoice.id %}"
+                    hx-target="#trInvoice"
+                    hx-swap="outerHTML">Salvar</button>
+            <button class="btn btn-outline-danger"
+                    hx-get="{% url 'bills:update_invoice' invoice.id %}"
+                    hx-target="#trInvoice"
+                    hx-swap="outerHTML">Cancelar</button>
+        </td>
+    </form>
+</tr>

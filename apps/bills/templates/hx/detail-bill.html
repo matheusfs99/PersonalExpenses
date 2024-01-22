@@ -1,0 +1,22 @@
+<tr id="trBill">
+    <form method="post">
+        {% csrf_token %}
+        <td>{{ form.bill }}</td>
+        <td>{{ form.value }}</td>
+        <td>{{ form.payment_method }}</td>
+        <td>{{ form.payment_date }}</td>
+        <td>{{ form.paid }}</td>
+        <td>
+            <button type="submit"
+                    class="btn btn-outline-success"
+                    hx-post="{% url 'bills:update_bill' bill.id %}"
+                    hx-target="#trBill"
+                    hx-swap="outerHTML">Salvar</button>
+            <button class="btn btn-outline-danger"
+                    hx-get="{% url 'bills:update_bill' bill.id %}"
+                    hx-target="#trBill"
+                    hx-swap="outerHTML">Cancelar</button>
+
+        </td>
+    </form>
+</tr>
