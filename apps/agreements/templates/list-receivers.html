@@ -14,17 +14,7 @@
             </thead>
             <tbody>
             {% for receiver in receivers %}
-            <tr>
-                <td>{{ receiver.name }}</td>
-                <td>R${{ receiver.value }}</td>
-                <td>{{ receiver.reason }}</td>
-                <td>{{ receiver.billing_date }}</td>
-                <td>
-                    <button class="btn btn-outline-dark">
-                        Editar
-                    </button>
-                </td>
-            </tr>
+            {% include "hx/receiver-hx.html" %}
             {% endfor %}
             </tbody>
             <tfoot>

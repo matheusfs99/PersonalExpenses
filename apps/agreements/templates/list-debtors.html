@@ -14,17 +14,7 @@
             </thead>
             <tbody>
             {% for debtor in debtors %}
-            <tr>
-                <td>{{ debtor.name }}</td>
-                <td>R${{ debtor.value }}</td>
-                <td>{{ debtor.reason }}</td>
-                <td>{{ debtor.billing_date }}</td>
-                <td>
-                    <button class="btn btn-outline-dark">
-                        Editar
-                    </button>
-                </td>
-            </tr>
+            {% include "hx/debtor-hx.html" %}
             {% endfor %}
             </tbody>
             <tfoot>

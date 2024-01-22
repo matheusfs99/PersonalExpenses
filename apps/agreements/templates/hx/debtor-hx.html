@@ -1,0 +1,12 @@
+<tr hx-target="this" hx-swap="outerHTML">
+    <td>{{ debtor.name }}</td>
+    <td>R${{ debtor.value }}</td>
+    <td>{{ debtor.reason }}</td>
+    <td>{{ debtor.billing_date }}</td>
+    <td>
+        <button class="btn btn-outline-dark"
+                hx-get="{% url 'agreements:detail_debtor' debtor.id %}">
+            Editar
+        </button>
+    </td>
+</tr>

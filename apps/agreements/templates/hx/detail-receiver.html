@@ -1,0 +1,22 @@
+<tr id="trReceiver">
+    <form method="post">
+        {% csrf_token %}
+        <td>{{ form.name }}</td>
+        <td>{{ form.value }}</td>
+        <td>{{ form.reason }}</td>
+        <td>{{ form.billing_date }}</td>
+        <td>
+            <button type="submit"
+                    class="btn btn-outline-success"
+                    hx-post="{% url 'agreements:update_receiver' receiver.pk %}"
+                    hx-target="#trReceiver"
+                    hx-swap="outerHTML">Salvar</button>
+            <button class="btn btn-outline-danger"
+                    hx-get="{% url 'agreements:update_receiver' receiver.pk %}"
+                    hx-target="#trReceiver"
+                    hx-swap="outerHTML">
+                Cancelar
+            </button>
+        </td>
+    </form>
+</tr>

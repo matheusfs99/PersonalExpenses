@@ -15,6 +15,23 @@ def add_debtor(request):
     return render(request, "add-debtor.html", context)
 
 
+def detail_debtor(request, pk):
+    debtor = Debtor.objects.get(id=pk)
+    form = DebtorForm(request.POST or None, instance=debtor)
+    context = {"form": form, "debtor": debtor}
+    return render(request, "hx/detail-debtor.html", context)
+
+
+def update_debtor(request, pk):
+    debtor = Debtor.objects.get(id=pk)
+    form = DebtorForm(request.POST or None, instance=debtor)
+    context = {"form": form, "debtor": debtor}
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+    return render(request, "hx/debtor-hx.html", context)
+
+
 def list_debtors():
     debtors = Debtor.objects.filter(paid=False)
     total_debtors = total_value(debtors, "value")
@@ -37,6 +54,22 @@ def add_receiver(request):
             return redirect("core:home")
     return render(request, "add-receiver.html", context)
 
+
+def detail_receiver(request, pk):
+    receiver = Receiver.objects.get(id=pk)
+    form = ReceiverForm(request.POST or None, instance=receiver)
+    context = {"form": form, "receiver": receiver}
+    return render(request, "hx/detail-receiver.html", context)
+
+
+def update_receiver(request, pk):
+    receiver = Receiver.objects.get(id=pk)
+    form = ReceiverForm(request.POST or None, instance=receiver)
+    context = {"form": form, "receiver": receiver}
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+    return render(request, "hx/receiver-hx.html", context)
 
 def list_receivers():
     receivers = Receiver.objects.filter(paid=False)
