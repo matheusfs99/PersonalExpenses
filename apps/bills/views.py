@@ -33,6 +33,12 @@ def update_bill(request, pk):
     return render(request, "hx/bill-hx.html", context)
 
 
+def delete_bill(request, pk):
+    bill = Bill.objects.get(id=pk)
+    bill.delete()
+    return render(request, "bills-table.html")
+
+
 def list_bills():
     bills = Bill.objects.all()
     total_bills = total_value(bills, "value")
@@ -73,6 +79,12 @@ def update_invoice(request, pk):
     return render(request, "hx/invoice-hx.html", context)
 
 
+def delete_invoice(request, pk):
+    invoice = Invoice.objects.get(id=pk)
+    invoice.delete()
+    return render(request, "invoices-table.html")
+
+
 def add_extra_invoice(request):
     form = InvoiceExtraForm(request.POST or None)
     context = {"form": form}
@@ -98,6 +110,12 @@ def update_extra_invoice(request, pk):
         if form.is_valid():
             form.save()
     return render(request, "hx/extra-invoice-hx.html", context)
+
+
+def delete_extra_invoice(request, pk):
+    invoice = Invoice.objects.get(id=pk)
+    invoice.delete()
+    return render(request, "extra-invoices-table.html")
 
 
 def list_invoices():

@@ -15,9 +15,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for invoice in invoices %}
-                {% include "hx/invoice-hx.html" %}
-                {% endfor %}
+                {% include "invoices-table.html" %}
                 </tbody>
                 <tfoot>
                 <tr>
@@ -46,9 +44,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for invoice in extra_invoices %}
-                {% include "hx/extra-invoice-hx.html" %}
-                {% endfor %}
+                {% include "extra-invoices-table.html" %}
                 </tbody>
                 <tfoot>
                 <tr>

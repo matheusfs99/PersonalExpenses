@@ -12,8 +12,12 @@
                 hx-get="{% url 'bills:detail_invoice' invoice.id %}">
             <i class="fa-regular fa-pen-to-square"></i>
         </button>
-        <button class="btn btn-outline-danger">
-            <i class="fa-solid fa-xmark"></i>
+        <button class="btn btn-outline-danger"
+                hx-delete="{% url 'bills:delete_invoice' invoice.id %}"
+                hx-confirm="Deseja mesmo deletar?"
+                hx-target="closest tr"
+                hx-swap="outerHTML swap:500ms">
+            <i class="fa-solid fa-trash"></i>
         </button>
     </td>
 </tr>
