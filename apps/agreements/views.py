@@ -32,6 +32,12 @@ def update_debtor(request, pk):
     return render(request, "hx/debtor-hx.html", context)
 
 
+def delete_debtor(request, pk):
+    debtor = Debtor.objects.get(id=pk)
+    debtor.delete()
+    return render(request, "debtors-table.html")
+
+
 def list_debtors():
     debtors = Debtor.objects.filter(paid=False)
     total_debtors = total_value(debtors, "value")
@@ -70,6 +76,13 @@ def update_receiver(request, pk):
         if form.is_valid():
             form.save()
     return render(request, "hx/receiver-hx.html", context)
+
+
+def delete_receiver(request, pk):
+    receiver = Receiver.objects.get(id=pk)
+    receiver.delete()
+    return render(request, "receivers-table.html")
+
 
 def list_receivers():
     receivers = Receiver.objects.filter(paid=False)

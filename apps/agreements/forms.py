@@ -13,7 +13,8 @@ class DebtorForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(DebtorForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
+            if field_name is not "paid":
+                field.widget.attrs["class"] = "form-control"
 
 
 class ReceiverForm(forms.ModelForm):
@@ -27,4 +28,5 @@ class ReceiverForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ReceiverForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
-            field.widget.attrs["class"] = "form-control"
+            if field_name is not "paid":
+                field.widget.attrs["class"] = "form-control"
