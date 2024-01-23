@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import add_earning, add_discount, detail_earning, update_earning, detail_discount, update_discount
+from .views import *
 
 app_name = "balance"
 
@@ -10,4 +10,6 @@ urlpatterns = [
     path("update-earning/<int:pk>/", update_earning, name="update_earning"),
     path("discount/<int:pk>/", detail_discount, name="detail_discount"),
     path("update-discount/<int:pk>/", update_discount, name="update_discount"),
+    path("delete-discount/<int:pk>/", delete_discount, name="delete_discount"),
+    path("delete-earning/<int:pk>/", delete_earning, name="delete_earning"),
 ]

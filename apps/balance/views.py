@@ -32,6 +32,12 @@ def update_earning(request, pk):
     return render(request, "hx/earning-hx.html", context)
 
 
+def delete_earning(request, pk):
+    earning = Earning.objects.get(id=pk)
+    earning.delete()
+    return render(request, "earning-table.html")
+
+
 def add_discount(request):
     form = DiscountForm(request.POST or None)
     context = {"form": form}
@@ -57,6 +63,12 @@ def update_discount(request, pk):
         if form.is_valid():
             form.save()
     return render(request, "hx/discount-hx.html", context)
+
+
+def delete_discount(request, pk):
+    discount = Discount.objects.get(id=pk)
+    discount.delete()
+    return render(request, "discount-table.html")
 
 
 def list_balance():

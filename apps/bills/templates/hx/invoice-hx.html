@@ -8,9 +8,12 @@
     </td>
     <td>R${{ invoice.total }}</td>
     <td>
-        <span class="clickable"
+        <button class="btn btn-outline-dark"
                 hx-get="{% url 'bills:detail_invoice' invoice.id %}">
             <i class="fa-regular fa-pen-to-square"></i>
-        </span>
+        </button>
+        <button class="btn btn-outline-danger">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
     </td>
 </tr>

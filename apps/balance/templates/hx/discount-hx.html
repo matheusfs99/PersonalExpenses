@@ -2,9 +2,16 @@
     <td>{{ discount.discount }}</td>
     <td>R${{ discount.value }}</td>
     <td>
-        <span class="clickable"
-              hx-get="{% url 'balance:detail_discount' discount.id %}">
+        <button class="btn btn-outline-dark"
+                hx-get="{% url 'balance:detail_discount' discount.id %}">
             <i class="fa-regular fa-pen-to-square"></i>
-        </span>
+        </button>
+        <button class="btn btn-outline-danger"
+                hx-delete="{% url 'balance:delete_discount' discount.id %}"
+                hx-confirm="Deseja mesmo deletar?"
+                hx-target="closest tr"
+                hx-swap="outerHTML swap:500ms">
+            <i class="fa-solid fa-trash"></i>
+        </button>
     </td>
 </tr>

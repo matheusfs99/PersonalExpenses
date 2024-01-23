@@ -13,9 +13,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for earning in earnings %}
-                {% include "hx/earning-hx.html" %}
-                {% endfor %}
+                {% include "earning-table.html" %}
                 <tr>
                     <td>Descontos</td>
                     <td>- R${{ total_discounts }}</td>
@@ -47,9 +45,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for discount in discounts %}
-                    {% include "hx/discount-hx.html" %}
-                    {% endfor %}
+                    {% include "discount-table.html" %}
                     </tbody>
                     <tfoot>
                     <tr>

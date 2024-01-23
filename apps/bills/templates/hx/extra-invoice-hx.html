@@ -4,9 +4,12 @@
     <td>{{ invoice.card }}</td>
     <td>{{ invoice.card.maturity }}</td>
     <td>
-        <span class="clickable"
+        <button class="btn btn-outline-dark"
                 hx-get="{% url 'bills:detail_extra_invoice' invoice.id %}">
             <i class="fa-regular fa-pen-to-square"></i>
-        </span>
+        </button>
+        <button class="btn btn-outline-danger">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
     </td>
 </tr>
