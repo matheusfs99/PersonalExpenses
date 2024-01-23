@@ -2,6 +2,7 @@ asgiref==3.7.2
 dj-database-url==2.1.0
 Django==4.2.5
 djangorestframework==3.14.0
+fontawesomefree==6.5.1
 python-decouple==3.8
 pytz==2023.3.post1
 sqlparse==0.4.4

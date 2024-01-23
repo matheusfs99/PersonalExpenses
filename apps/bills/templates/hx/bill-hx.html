@@ -7,9 +7,9 @@
         {% if bill.paid %}Pago{% else %}Pendente{% endif %}
     </td>
     <td>
-        <button class="btn btn-outline-dark"
-                hx-get="{% url 'bills:detail_bill' bill.id %}">
-            Editar
-        </button>
+        <span class="clickable"
+              hx-get="{% url 'bills:detail_bill' bill.id %}">
+            <i class="fa-regular fa-pen-to-square"></i>
+        </span>
     </td>
 </tr>

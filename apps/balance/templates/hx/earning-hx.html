@@ -2,9 +2,9 @@
     <td>{{ earning.earning }}</td>
     <td>R${{ earning.value }}</td>
     <td>
-        <button class="btn btn-outline-dark"
-                hx-get="{% url 'balance:detail_earning' earning.id %}">
-            Editar
-        </button>
+        <span class="clickable"
+              hx-get="{% url 'balance:detail_earning' earning.id %}">
+            <i class="fa-regular fa-pen-to-square"></i>
+        </span>
     </td>
 </tr>

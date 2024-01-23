@@ -8,9 +8,9 @@
     </td>
     <td>R${{ invoice.total }}</td>
     <td>
-        <button class="btn btn-outline-dark"
+        <span class="clickable"
                 hx-get="{% url 'bills:detail_invoice' invoice.id %}">
-            Editar
-        </button>
+            <i class="fa-regular fa-pen-to-square"></i>
+        </span>
     </td>
 </tr>

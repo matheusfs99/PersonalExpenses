@@ -4,9 +4,9 @@
     <td>{{ receiver.reason }}</td>
     <td>{{ receiver.payment_date }}</td>
     <td>
-        <button class="btn btn-outline-dark"
+        <span class="clickable"
                 hx-get="{% url 'agreements:detail_receiver' receiver.id %}">
-            Editar
-        </button>
+            <i class="fa-regular fa-pen-to-square"></i>
+        </span>
     </td>
 </tr>
